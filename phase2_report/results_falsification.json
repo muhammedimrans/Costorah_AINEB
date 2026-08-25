@@ -1,0 +1,48 @@
+{
+  "F1_connection_pooling": {
+    "sessions": 4,
+    "sockets": 1,
+    "socket_cookie": 1,
+    "socket_inode": 749,
+    "principals_multiplexed_on_one_socket": [
+      "alice@corp",
+      "bob@corp",
+      "carol@corp",
+      "dave@corp"
+    ],
+    "socket_is_1to1_with_session": false
+  },
+  "F2_stream_multiplexing": {
+    "streams": 4,
+    "sockets": 1,
+    "socket_cookie": 2,
+    "principals_on_socket": [
+      "alice@corp",
+      "bob@corp",
+      "carol@corp",
+      "dave@corp"
+    ],
+    "per_socket_verdict_sufficient": false
+  },
+  "F3_cookie_stability": {
+    "distinct_sockets_distinct_cookies": true,
+    "cookie_survives_dup": true,
+    "dup_produces_new_inode": true,
+    "cookie_stable_over_time": true,
+    "cookie_identical_in_forked_child": true
+  },
+  "F4_scm_rights": {
+    "cookie_before": 5,
+    "cookie_in_receiver": 5,
+    "cookie_unchanged_after_handover": true,
+    "receiver_could_use_socket": true
+  },
+  "F5_pool_reuse": {
+    "socket_cookie": 6,
+    "principal_sequence": [
+      "alice@corp",
+      "bob@corp"
+    ],
+    "socket_served_multiple_principals": true
+  }
+}

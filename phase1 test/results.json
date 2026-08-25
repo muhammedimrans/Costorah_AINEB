@@ -1,0 +1,538 @@
+{
+  "strict_identical_argv": {
+    "E1": {
+      "instances": 4,
+      "distinct_selector_sets": 1,
+      "collision_groups": [
+        [
+          "A",
+          "B",
+          "C",
+          "D"
+        ]
+      ],
+      "selector_set_example": [
+        "unix:gid:0",
+        "unix:group:root",
+        "unix:path:/usr/bin/python3.12",
+        "unix:sha256:8295ee25cfdb239f3e165afceda7f46de73e2b606ff0e2e3d8623e3facd30acc",
+        "unix:uid:0",
+        "unix:user:root"
+      ],
+      "svids_issued": {
+        "A": "spiffe://example.org/agent/research-agent",
+        "B": "spiffe://example.org/agent/research-agent",
+        "C": "spiffe://example.org/agent/research-agent",
+        "D": "spiffe://example.org/agent/research-agent"
+      },
+      "peercred_pids": {
+        "A": 527,
+        "B": 528,
+        "C": 529,
+        "D": 530
+      }
+    },
+    "E2": {
+      "inventory": [
+        {
+          "fact": "cgroup",
+          "varies_across_instances": false,
+          "kernel_authoritative": true,
+          "admissible_in_registration_entry": true,
+          "usable_as_instance_selector": false
+        },
+        {
+          "fact": "cmdline",
+          "varies_across_instances": false,
+          "kernel_authoritative": false,
+          "admissible_in_registration_entry": true,
+          "usable_as_instance_selector": false
+        },
+        {
+          "fact": "environ_hash",
+          "varies_across_instances": true,
+          "kernel_authoritative": false,
+          "admissible_in_registration_entry": false,
+          "usable_as_instance_selector": false
+        },
+        {
+          "fact": "exe_path",
+          "varies_across_instances": false,
+          "kernel_authoritative": true,
+          "admissible_in_registration_entry": true,
+          "usable_as_instance_selector": false
+        },
+        {
+          "fact": "exe_sha256",
+          "varies_across_instances": false,
+          "kernel_authoritative": true,
+          "admissible_in_registration_entry": true,
+          "usable_as_instance_selector": false
+        },
+        {
+          "fact": "gid",
+          "varies_across_instances": false,
+          "kernel_authoritative": true,
+          "admissible_in_registration_entry": true,
+          "usable_as_instance_selector": false
+        },
+        {
+          "fact": "mntns",
+          "varies_across_instances": false,
+          "kernel_authoritative": true,
+          "admissible_in_registration_entry": false,
+          "usable_as_instance_selector": false
+        },
+        {
+          "fact": "netns",
+          "varies_across_instances": false,
+          "kernel_authoritative": true,
+          "admissible_in_registration_entry": false,
+          "usable_as_instance_selector": false
+        },
+        {
+          "fact": "pid",
+          "varies_across_instances": true,
+          "kernel_authoritative": true,
+          "admissible_in_registration_entry": false,
+          "usable_as_instance_selector": false
+        },
+        {
+          "fact": "pid_starttime_pair",
+          "varies_across_instances": true,
+          "kernel_authoritative": true,
+          "admissible_in_registration_entry": false,
+          "usable_as_instance_selector": false
+        },
+        {
+          "fact": "pidns",
+          "varies_across_instances": false,
+          "kernel_authoritative": true,
+          "admissible_in_registration_entry": false,
+          "usable_as_instance_selector": false
+        },
+        {
+          "fact": "ppid",
+          "varies_across_instances": false,
+          "kernel_authoritative": true,
+          "admissible_in_registration_entry": false,
+          "usable_as_instance_selector": false
+        },
+        {
+          "fact": "socket_inodes",
+          "varies_across_instances": true,
+          "kernel_authoritative": true,
+          "admissible_in_registration_entry": false,
+          "usable_as_instance_selector": false
+        },
+        {
+          "fact": "starttime_ticks",
+          "varies_across_instances": true,
+          "kernel_authoritative": true,
+          "admissible_in_registration_entry": false,
+          "usable_as_instance_selector": false
+        },
+        {
+          "fact": "supplementary_gids",
+          "varies_across_instances": false,
+          "kernel_authoritative": true,
+          "admissible_in_registration_entry": true,
+          "usable_as_instance_selector": false
+        },
+        {
+          "fact": "uid",
+          "varies_across_instances": false,
+          "kernel_authoritative": true,
+          "admissible_in_registration_entry": true,
+          "usable_as_instance_selector": false
+        },
+        {
+          "fact": "userns",
+          "varies_across_instances": false,
+          "kernel_authoritative": true,
+          "admissible_in_registration_entry": false,
+          "usable_as_instance_selector": false
+        }
+      ],
+      "usable_instance_selectors": []
+    },
+    "E3": {
+      "flows_to_destination": 4,
+      "attributable_via_proc_inode": 4,
+      "source_ips": [
+        "127.0.0.1"
+      ],
+      "flows": [
+        {
+          "laddr": "127.0.0.1",
+          "lport": 56716,
+          "raddr": "127.0.0.1",
+          "rport": 9443,
+          "inode": "935",
+          "pids": [
+            527
+          ],
+          "labels": [
+            "A"
+          ]
+        },
+        {
+          "laddr": "127.0.0.1",
+          "lport": 56730,
+          "raddr": "127.0.0.1",
+          "rport": 9443,
+          "inode": "940",
+          "pids": [
+            530
+          ],
+          "labels": [
+            "D"
+          ]
+        },
+        {
+          "laddr": "127.0.0.1",
+          "lport": 56744,
+          "raddr": "127.0.0.1",
+          "rport": 9443,
+          "inode": "945",
+          "pids": [
+            528
+          ],
+          "labels": [
+            "B"
+          ]
+        },
+        {
+          "laddr": "127.0.0.1",
+          "lport": 56754,
+          "raddr": "127.0.0.1",
+          "rport": 9443,
+          "inode": "950",
+          "pids": [
+            529
+          ],
+          "labels": [
+            "C"
+          ]
+        }
+      ],
+      "claims_seen_by_destination": [
+        {
+          "peer": [
+            "127.0.0.1",
+            56716
+          ],
+          "payload": {
+            "claimed_principal": "alice@corp.example"
+          }
+        },
+        {
+          "peer": [
+            "127.0.0.1",
+            56730
+          ],
+          "payload": {
+            "claimed_principal": "dave@corp.example"
+          }
+        },
+        {
+          "peer": [
+            "127.0.0.1",
+            56744
+          ],
+          "payload": {
+            "claimed_principal": "bob@corp.example"
+          }
+        },
+        {
+          "peer": [
+            "127.0.0.1",
+            56754
+          ],
+          "payload": {
+            "claimed_principal": "carol@corp.example"
+          }
+        }
+      ]
+    },
+    "E4": {
+      "destination_sees_only_self_asserted_claims": true,
+      "impersonation": null
+    }
+  },
+  "differ_by_label_only": {
+    "E1": {
+      "instances": 4,
+      "distinct_selector_sets": 1,
+      "collision_groups": [
+        [
+          "A",
+          "B",
+          "C",
+          "D"
+        ]
+      ],
+      "selector_set_example": [
+        "unix:gid:0",
+        "unix:group:root",
+        "unix:path:/usr/bin/python3.12",
+        "unix:sha256:8295ee25cfdb239f3e165afceda7f46de73e2b606ff0e2e3d8623e3facd30acc",
+        "unix:uid:0",
+        "unix:user:root"
+      ],
+      "svids_issued": {
+        "A": "spiffe://example.org/agent/research-agent",
+        "B": "spiffe://example.org/agent/research-agent",
+        "C": "spiffe://example.org/agent/research-agent",
+        "D": "spiffe://example.org/agent/research-agent"
+      },
+      "peercred_pids": {
+        "A": 542,
+        "B": 543,
+        "C": 544,
+        "D": 545
+      }
+    },
+    "E2": {
+      "inventory": [
+        {
+          "fact": "cgroup",
+          "varies_across_instances": false,
+          "kernel_authoritative": true,
+          "admissible_in_registration_entry": true,
+          "usable_as_instance_selector": false
+        },
+        {
+          "fact": "cmdline",
+          "varies_across_instances": true,
+          "kernel_authoritative": false,
+          "admissible_in_registration_entry": true,
+          "usable_as_instance_selector": false
+        },
+        {
+          "fact": "environ_hash",
+          "varies_across_instances": true,
+          "kernel_authoritative": false,
+          "admissible_in_registration_entry": false,
+          "usable_as_instance_selector": false
+        },
+        {
+          "fact": "exe_path",
+          "varies_across_instances": false,
+          "kernel_authoritative": true,
+          "admissible_in_registration_entry": true,
+          "usable_as_instance_selector": false
+        },
+        {
+          "fact": "exe_sha256",
+          "varies_across_instances": false,
+          "kernel_authoritative": true,
+          "admissible_in_registration_entry": true,
+          "usable_as_instance_selector": false
+        },
+        {
+          "fact": "gid",
+          "varies_across_instances": false,
+          "kernel_authoritative": true,
+          "admissible_in_registration_entry": true,
+          "usable_as_instance_selector": false
+        },
+        {
+          "fact": "mntns",
+          "varies_across_instances": false,
+          "kernel_authoritative": true,
+          "admissible_in_registration_entry": false,
+          "usable_as_instance_selector": false
+        },
+        {
+          "fact": "netns",
+          "varies_across_instances": false,
+          "kernel_authoritative": true,
+          "admissible_in_registration_entry": false,
+          "usable_as_instance_selector": false
+        },
+        {
+          "fact": "pid",
+          "varies_across_instances": true,
+          "kernel_authoritative": true,
+          "admissible_in_registration_entry": false,
+          "usable_as_instance_selector": false
+        },
+        {
+          "fact": "pid_starttime_pair",
+          "varies_across_instances": true,
+          "kernel_authoritative": true,
+          "admissible_in_registration_entry": false,
+          "usable_as_instance_selector": false
+        },
+        {
+          "fact": "pidns",
+          "varies_across_instances": false,
+          "kernel_authoritative": true,
+          "admissible_in_registration_entry": false,
+          "usable_as_instance_selector": false
+        },
+        {
+          "fact": "ppid",
+          "varies_across_instances": false,
+          "kernel_authoritative": true,
+          "admissible_in_registration_entry": false,
+          "usable_as_instance_selector": false
+        },
+        {
+          "fact": "socket_inodes",
+          "varies_across_instances": true,
+          "kernel_authoritative": true,
+          "admissible_in_registration_entry": false,
+          "usable_as_instance_selector": false
+        },
+        {
+          "fact": "starttime_ticks",
+          "varies_across_instances": true,
+          "kernel_authoritative": true,
+          "admissible_in_registration_entry": false,
+          "usable_as_instance_selector": false
+        },
+        {
+          "fact": "supplementary_gids",
+          "varies_across_instances": false,
+          "kernel_authoritative": true,
+          "admissible_in_registration_entry": true,
+          "usable_as_instance_selector": false
+        },
+        {
+          "fact": "uid",
+          "varies_across_instances": false,
+          "kernel_authoritative": true,
+          "admissible_in_registration_entry": true,
+          "usable_as_instance_selector": false
+        },
+        {
+          "fact": "userns",
+          "varies_across_instances": false,
+          "kernel_authoritative": true,
+          "admissible_in_registration_entry": false,
+          "usable_as_instance_selector": false
+        }
+      ],
+      "usable_instance_selectors": []
+    },
+    "E3": {
+      "flows_to_destination": 4,
+      "attributable_via_proc_inode": 4,
+      "source_ips": [
+        "127.0.0.1"
+      ],
+      "flows": [
+        {
+          "laddr": "127.0.0.1",
+          "lport": 57296,
+          "raddr": "127.0.0.1",
+          "rport": 9443,
+          "inode": "1205",
+          "pids": [
+            543
+          ],
+          "labels": [
+            "B"
+          ]
+        },
+        {
+          "laddr": "127.0.0.1",
+          "lport": 57312,
+          "raddr": "127.0.0.1",
+          "rport": 9443,
+          "inode": "1213",
+          "pids": [
+            542
+          ],
+          "labels": [
+            "A"
+          ]
+        },
+        {
+          "laddr": "127.0.0.1",
+          "lport": 57314,
+          "raddr": "127.0.0.1",
+          "rport": 9443,
+          "inode": "1218",
+          "pids": [
+            544
+          ],
+          "labels": [
+            "C"
+          ]
+        },
+        {
+          "laddr": "127.0.0.1",
+          "lport": 57330,
+          "raddr": "127.0.0.1",
+          "rport": 9443,
+          "inode": "1223",
+          "pids": [
+            545
+          ],
+          "labels": [
+            "D"
+          ]
+        }
+      ],
+      "claims_seen_by_destination": [
+        {
+          "peer": [
+            "127.0.0.1",
+            57296
+          ],
+          "payload": {
+            "claimed_principal": "bob@corp.example"
+          }
+        },
+        {
+          "peer": [
+            "127.0.0.1",
+            57312
+          ],
+          "payload": {
+            "claimed_principal": "alice@corp.example"
+          }
+        },
+        {
+          "peer": [
+            "127.0.0.1",
+            57314
+          ],
+          "payload": {
+            "claimed_principal": "carol@corp.example"
+          }
+        },
+        {
+          "peer": [
+            "127.0.0.1",
+            57330
+          ],
+          "payload": {
+            "claimed_principal": "dave@corp.example"
+          }
+        },
+        {
+          "peer": [
+            "127.0.0.1",
+            57334
+          ],
+          "payload": {
+            "claimed_principal": "bob@corp.example"
+          }
+        }
+      ]
+    },
+    "E4": {
+      "destination_sees_only_self_asserted_claims": true,
+      "impersonation": {
+        "impersonated": "B",
+        "claimed_principal": "bob@corp.example",
+        "svid_issued": "spiffe://example.org/agent/research-agent",
+        "selectors_identical_to_victim": true
+      }
+    }
+  }
+}

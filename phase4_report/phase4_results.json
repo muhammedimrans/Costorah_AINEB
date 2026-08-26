@@ -1,0 +1,95 @@
+{
+  "envoy_version": "1.31.0 (7b8baff1758f0a584dcc3cb657b5032000bcb3d7, BoringSSL)",
+  "S20_mechanism_verification": {
+    "runtime_tests": [
+      {
+        "config": "set_filter_state object_key=envoy.string, shared_with_upstream=ONCE",
+        "principals": 3,
+        "upstream_connections": 1,
+        "partitioned": false
+      },
+      {
+        "config": "set_filter_state object_key=envoy.string, shared_with_upstream=TRANSITIVE",
+        "principals": 3,
+        "upstream_connections": 1,
+        "partitioned": false
+      },
+      {
+        "config": "set_filter_state object_key=envoy.network.upstream_server_name",
+        "principals": 3,
+        "upstream_connections": 1,
+        "partitioned": false
+      },
+      {
+        "config": "POSITIVE CONTROL: per-principal cluster routing",
+        "principals": 3,
+        "upstream_connections": 3,
+        "partitioned": true
+      }
+    ],
+    "source_evidence": {
+      "pool_key_site": "source/common/upstream/cluster_manager_impl.cc ~L2006-2023",
+      "hash_site": "source/common/network/transport_socket_options_impl.cc L47-53",
+      "hash_predicate": "dynamic_cast<const Hashable*>(object.data_.get())",
+      "StringAccessorImpl_implements_hash": false,
+      "stock_objects_with_hash": [
+        "filter_state_dst_address.h"
+      ],
+      "conclusion": "envoy.string is not Hashable, so it contributes nothing to the pool key"
+    }
+  },
+  "S10_scaling_real_envoy_http2_upstream": [
+    {
+      "N": 32,
+      "P": 4,
+      "upstream_connections": 4
+    },
+    {
+      "N": 32,
+      "P": 32,
+      "upstream_connections": 32
+    },
+    {
+      "N": 64,
+      "P": 4,
+      "upstream_connections": 4
+    },
+    {
+      "N": 64,
+      "P": 64,
+      "upstream_connections": 64
+    }
+  ],
+  "S13_attribution": {
+    "http1_1_upstream": {
+      "principals": 8,
+      "concurrency": 16,
+      "logged_requests": 919,
+      "upstream_connections": 112,
+      "exact_attribution_rate": 1.0,
+      "ambiguity_rate": 0.0,
+      "max_principals_concurrent_on_one_connection": 1,
+      "audit_completeness": 1.0
+    },
+    "http2_upstream": {
+      "principals": 8,
+      "concurrency": 16,
+      "logged_requests": 655,
+      "upstream_connections": 2,
+      "exact_attribution_rate": 0.1084,
+      "ambiguity_rate": 0.8916,
+      "max_principals_concurrent_on_one_connection": 4,
+      "audit_completeness": 1.0
+    }
+  },
+  "claims": {
+    "C1": "CONFIRMED (positive control) - mechanism corrected",
+    "C2": "CONFIRMED - N=32/P=32 -> 32 conns; N=64/P=64 -> 64 conns",
+    "C3": "CONFIRMED on real Envoy - O(P), independent of N",
+    "C4": "CONFIRMED by construction",
+    "C5": "CONFIRMED ONLY UNDER MULTIPLEXING - false for HTTP/1.1 upstream",
+    "C6": "SPLIT - audit completeness 1.0 both; network attributability 1.0 (H1) vs 0.108 (H2)",
+    "C7": "NOT TESTED - requires xDS",
+    "C8": "protocol-dependence of the trade-off appears uncharacterised"
+  }
+}

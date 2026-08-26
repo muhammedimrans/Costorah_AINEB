@@ -1,0 +1,169 @@
+{
+  "comparison": [
+    {
+      "scheme": "per_principal",
+      "principals": 200,
+      "distinct_policies": 4,
+      "upstream_connections": 200,
+      "amplification_vs_principals": 1.0,
+      "enforcement_wrong_verdicts": 0,
+      "enforcement_correct": true,
+      "attribution_ambiguous_5tuples": 0,
+      "max_principals_per_5tuple": 1,
+      "attribution_exact": true,
+      "setup_ms_total": 107.0,
+      "setup_ms_per_principal": 0.5349
+    },
+    {
+      "scheme": "per_policy_class",
+      "principals": 200,
+      "distinct_policies": 4,
+      "upstream_connections": 4,
+      "amplification_vs_principals": 0.02,
+      "enforcement_wrong_verdicts": 0,
+      "enforcement_correct": true,
+      "attribution_ambiguous_5tuples": 4,
+      "max_principals_per_5tuple": 50,
+      "attribution_exact": false,
+      "setup_ms_total": 4.5,
+      "setup_ms_per_principal": 0.0223
+    }
+  ],
+  "scaling": [
+    {
+      "n": 10,
+      "per_principal": {
+        "scheme": "per_principal",
+        "principals": 10,
+        "distinct_policies": 4,
+        "upstream_connections": 10,
+        "amplification_vs_principals": 1.0,
+        "enforcement_wrong_verdicts": 0,
+        "enforcement_correct": true,
+        "attribution_ambiguous_5tuples": 0,
+        "max_principals_per_5tuple": 1,
+        "attribution_exact": true,
+        "setup_ms_total": 1.5,
+        "setup_ms_per_principal": 0.1461
+      },
+      "per_policy_class": {
+        "scheme": "per_policy_class",
+        "principals": 10,
+        "distinct_policies": 4,
+        "upstream_connections": 4,
+        "amplification_vs_principals": 0.4,
+        "enforcement_wrong_verdicts": 0,
+        "enforcement_correct": true,
+        "attribution_ambiguous_5tuples": 4,
+        "max_principals_per_5tuple": 3,
+        "attribution_exact": false,
+        "setup_ms_total": 0.9,
+        "setup_ms_per_principal": 0.0882
+      },
+      "reduction": "2x"
+    },
+    {
+      "n": 50,
+      "per_principal": {
+        "scheme": "per_principal",
+        "principals": 50,
+        "distinct_policies": 4,
+        "upstream_connections": 50,
+        "amplification_vs_principals": 1.0,
+        "enforcement_wrong_verdicts": 0,
+        "enforcement_correct": true,
+        "attribution_ambiguous_5tuples": 0,
+        "max_principals_per_5tuple": 1,
+        "attribution_exact": true,
+        "setup_ms_total": 5.9,
+        "setup_ms_per_principal": 0.1179
+      },
+      "per_policy_class": {
+        "scheme": "per_policy_class",
+        "principals": 50,
+        "distinct_policies": 4,
+        "upstream_connections": 4,
+        "amplification_vs_principals": 0.08,
+        "enforcement_wrong_verdicts": 0,
+        "enforcement_correct": true,
+        "attribution_ambiguous_5tuples": 4,
+        "max_principals_per_5tuple": 13,
+        "attribution_exact": false,
+        "setup_ms_total": 1.6,
+        "setup_ms_per_principal": 0.0317
+      },
+      "reduction": "12x"
+    },
+    {
+      "n": 200,
+      "per_principal": {
+        "scheme": "per_principal",
+        "principals": 200,
+        "distinct_policies": 4,
+        "upstream_connections": 200,
+        "amplification_vs_principals": 1.0,
+        "enforcement_wrong_verdicts": 0,
+        "enforcement_correct": true,
+        "attribution_ambiguous_5tuples": 0,
+        "max_principals_per_5tuple": 1,
+        "attribution_exact": true,
+        "setup_ms_total": 30.5,
+        "setup_ms_per_principal": 0.1525
+      },
+      "per_policy_class": {
+        "scheme": "per_policy_class",
+        "principals": 200,
+        "distinct_policies": 4,
+        "upstream_connections": 4,
+        "amplification_vs_principals": 0.02,
+        "enforcement_wrong_verdicts": 0,
+        "enforcement_correct": true,
+        "attribution_ambiguous_5tuples": 4,
+        "max_principals_per_5tuple": 50,
+        "attribution_exact": false,
+        "setup_ms_total": 4.3,
+        "setup_ms_per_principal": 0.0217
+      },
+      "reduction": "50x"
+    },
+    {
+      "n": 800,
+      "per_principal": {
+        "scheme": "per_principal",
+        "principals": 800,
+        "distinct_policies": 4,
+        "upstream_connections": 800,
+        "amplification_vs_principals": 1.0,
+        "enforcement_wrong_verdicts": 0,
+        "enforcement_correct": true,
+        "attribution_ambiguous_5tuples": 0,
+        "max_principals_per_5tuple": 1,
+        "attribution_exact": true,
+        "setup_ms_total": 281.3,
+        "setup_ms_per_principal": 0.3517
+      },
+      "per_policy_class": {
+        "scheme": "per_policy_class",
+        "principals": 800,
+        "distinct_policies": 4,
+        "upstream_connections": 4,
+        "amplification_vs_principals": 0.005,
+        "enforcement_wrong_verdicts": 0,
+        "enforcement_correct": true,
+        "attribution_ambiguous_5tuples": 4,
+        "max_principals_per_5tuple": 200,
+        "attribution_exact": false,
+        "setup_ms_total": 15.1,
+        "setup_ms_per_principal": 0.0189
+      },
+      "reduction": "200x"
+    }
+  ],
+  "E4_attribution_loss": {
+    "principals": 800,
+    "per_principal_max_on_one_5tuple": 1,
+    "per_policy_class_max_on_one_5tuple": 200,
+    "enforcement_preserved": true,
+    "attribution_preserved": false
+  }
+}

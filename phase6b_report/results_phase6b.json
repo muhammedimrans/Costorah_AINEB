@@ -1,0 +1,350 @@
+{
+  "environment": {
+    "cpu": "1x Intel Xeon @2.10GHz (single core available)",
+    "kernel": "Linux 6.18.44, BTF",
+    "openssl": "3.0.13",
+    "envoy": "1.31.0",
+    "toolchain": "clang 18.1.3, libbpf 1.3"
+  },
+  "RQ2_native_crypto": {
+    "signing_input_bytes": 340,
+    "raw_verify_per_s_per_core": 8726,
+    "verify_plus_sha256_per_s_per_core": 9189,
+    "sign_per_s_per_core": 21790,
+    "verify_p50_us": 111.98,
+    "verify_p99_us": 155.48,
+    "verify_p999_us": 188.78,
+    "openssl_version": "OpenSSL 3.0.13 30 Jan 2024",
+    "breakdown": {
+      "fresh_ctx_per_op": 8648,
+      "reused_ctx": 9106,
+      "ctx_setup_only_no_curve_op": 432911,
+      "curve_op_share_of_time_pct": 98.0
+    },
+    "phase6_python_full_jwt_verify_per_s": 6376,
+    "native_over_python_ratio": 1.44,
+    "phase6_claim_was": "native is 3-5x faster -- INCORRECT"
+  },
+  "RQ4_policy_class": {
+    "theoretical_max_P_policy": 2239488000,
+    "theoretical_max_P_network": 86400,
+    "network_dims": [
+      "destination_set",
+      "ports",
+      "protocol",
+      "network_zone",
+      "tenant",
+      "geography"
+    ],
+    "all_dims": [
+      "destination_set",
+      "ports",
+      "protocol",
+      "network_zone",
+      "data_class",
+      "risk",
+      "time_window",
+      "tenant",
+      "user_privilege",
+      "agent_privilege",
+      "runtime_posture",
+      "device_posture",
+      "geography",
+      "rate_limit"
+    ],
+    "scenarios": {
+      "independent_random": [
+        {
+          "N": 1000,
+          "P_policy": 1000,
+          "P_network": 992,
+          "P_network_over_N": 0.992
+        },
+        {
+          "N": 10000,
+          "P_policy": 10000,
+          "P_network": 9440,
+          "P_network_over_N": 0.944
+        },
+        {
+          "N": 100000,
+          "P_policy": 100000,
+          "P_network": 59284,
+          "P_network_over_N": 0.59284
+        },
+        {
+          "N": 1000000,
+          "P_policy": 999791,
+          "P_network": 86400,
+          "P_network_over_N": 0.0864
+        }
+      ],
+      "structured_templates": [
+        {
+          "N": 1000,
+          "P_policy": 73,
+          "P_network": 40,
+          "P_network_over_N": 0.04
+        },
+        {
+          "N": 10000,
+          "P_policy": 329,
+          "P_network": 40,
+          "P_network_over_N": 0.004
+        },
+        {
+          "N": 100000,
+          "P_policy": 861,
+          "P_network": 40,
+          "P_network_over_N": 0.0004
+        },
+        {
+          "N": 1000000,
+          "P_policy": 880,
+          "P_network": 40,
+          "P_network_over_N": 4e-05
+        }
+      ],
+      "structured_net_exceptions_5pct": [
+        {
+          "N": 1000,
+          "P_policy": 78,
+          "P_network": 50,
+          "P_network_over_N": 0.05
+        },
+        {
+          "N": 10000,
+          "P_policy": 396,
+          "P_network": 208,
+          "P_network_over_N": 0.0208
+        },
+        {
+          "N": 100000,
+          "P_policy": 1816,
+          "P_network": 1031,
+          "P_network_over_N": 0.01031
+        },
+        {
+          "N": 1000000,
+          "P_policy": 2631,
+          "P_network": 1761,
+          "P_network_over_N": 0.001761
+        }
+      ]
+    },
+    "network_exception_sensitivity_N100k": [
+      {
+        "exception_rate": 0.0,
+        "P_network": 40,
+        "P_network_over_N": 0.0004
+      },
+      {
+        "exception_rate": 0.01,
+        "P_network": 327,
+        "P_network_over_N": 0.00327
+      },
+      {
+        "exception_rate": 0.05,
+        "P_network": 1027,
+        "P_network_over_N": 0.01027
+      },
+      {
+        "exception_rate": 0.1,
+        "P_network": 1348,
+        "P_network_over_N": 0.01348
+      },
+      {
+        "exception_rate": 0.25,
+        "P_network": 1687,
+        "P_network_over_N": 0.01687
+      },
+      {
+        "exception_rate": 0.5,
+        "P_network": 1772,
+        "P_network_over_N": 0.01772
+      },
+      {
+        "exception_rate": 1.0,
+        "P_network": 1788,
+        "P_network_over_N": 0.01788
+      }
+    ]
+  },
+  "RQ9_RQ10_ebpf": {
+    "RQ9": {
+      "carrier": "cgroup_id",
+      "class_A_cgroup_id": 21,
+      "class_B_cgroup_id": 36,
+      "shared_destination": "127.0.0.1:19201",
+      "class_A_result": "ALLOWED",
+      "class_B_result": "BLOCKED 1",
+      "differentiated": true,
+      "destination_only_key_sufficient": false,
+      "destination_only_reason": "a (daddr,dport) key holds exactly one verdict; A and B share (daddr,dport) but require ALLOW and DENY",
+      "required_key": "(enforcement_identity, daddr, dport)",
+      "enforcement_identity_carriers_visible_at_connect4": [
+        "cgroup id",
+        "socket mark (needs CAP_NET_ADMIN to set)",
+        "source address if gateway re-originates per class"
+      ]
+    },
+    "RQ10": {
+      "rows": [
+        {
+          "entries": 1000000,
+          "segment_load_s": 2.33,
+          "lookup_p50_us": 1.53,
+          "lookup_p99_us": 3.65,
+          "lookup_p999_us": 13.95,
+          "insert_failed_at_target": false
+        },
+        {
+          "entries": 1048576,
+          "segment_load_s": 0.12,
+          "lookup_p50_us": 1.7,
+          "lookup_p99_us": 3.42,
+          "lookup_p999_us": 20.47,
+          "insert_failed_at_target": true
+        }
+      ],
+      "max_entries_configured": 1048576,
+      "update_churn_per_s": 361678
+    }
+  },
+  "RQ10_scale_10M": {
+    "rows": [
+      {
+        "entries": 1000000,
+        "segment_load_s": 2.68,
+        "p50_us": 1.65,
+        "p99_us": 2.89,
+        "p999_us": 15.01,
+        "mem_MB": -0.0,
+        "insert_failed": false
+      },
+      {
+        "entries": 2000000,
+        "segment_load_s": 2.55,
+        "p50_us": 1.62,
+        "p99_us": 2.54,
+        "p999_us": 14.21,
+        "mem_MB": -0.0,
+        "insert_failed": false
+      },
+      {
+        "entries": 5000000,
+        "segment_load_s": 7.82,
+        "p50_us": 1.88,
+        "p99_us": 6.58,
+        "p999_us": 18.16,
+        "mem_MB": -0.0,
+        "insert_failed": false
+      },
+      {
+        "entries": 10000000,
+        "segment_load_s": 13.56,
+        "p50_us": 1.73,
+        "p99_us": 6.61,
+        "p999_us": 16.77,
+        "mem_MB": -0.0,
+        "insert_failed": false
+      }
+    ],
+    "update_churn_per_s": 331715,
+    "max_entries_configured": 16777216,
+    "entries_reached": 10000000
+  },
+  "bpf_map_prealloc": {
+    "1M_entry_map_MB_at_load": 87,
+    "1M_load_s": 0.29,
+    "16M_entry_map_MB_at_load": 1508,
+    "16M_load_s": 6.19,
+    "note": "BPF hash maps preallocate at load; max_entries costs memory and startup before any insert"
+  },
+  "RQ1_RQ3": {
+    "RQ1_control_plane": {
+      "agents": 1000000,
+      "registration_per_s": 188981,
+      "registration_total_s": 5.3,
+      "index_build_s": 1.8,
+      "db_size_mb": 184,
+      "lookup_p50_ms": 0.006,
+      "lookup_p99_ms": 0.03,
+      "lookup_p999_ms": 0.042,
+      "update_p50_ms": 0.024,
+      "update_p99_ms": 0.068,
+      "bulk_migration_rows": 25140,
+      "bulk_migration_per_s": 36446,
+      "revocation_insert_per_s": 443001,
+      "revocation_check_p50_ms": 0.003,
+      "revocation_check_p99_ms": 0.007,
+      "network_classes_found": 40,
+      "class_rollup_s": 0.79,
+      "concurrent_lookups_per_s": 145005,
+      "concurrent_p99_ms": 0.018,
+      "engine": "sqlite3 WAL (a floor; production would use PostgreSQL)"
+    },
+    "RQ3_token_attacks": {
+      "00_valid_baseline": {
+        "allowed": true,
+        "reason": "nc01",
+        "correct": true
+      },
+      "01_policy_class_tampered": {
+        "allowed": false,
+        "reason": "bad_signature",
+        "correct": true
+      },
+      "02_risk_downgraded": {
+        "allowed": false,
+        "reason": "bad_signature",
+        "correct": true
+      },
+      "03_key_substitution": {
+        "allowed": false,
+        "reason": "bad_signature",
+        "correct": true
+      },
+      "04_alg_confusion_HS256": {
+        "allowed": false,
+        "reason": "bad_alg",
+        "correct": true
+      },
+      "05_alg_none": {
+        "allowed": false,
+        "reason": "bad_alg",
+        "correct": true
+      },
+      "06_expired": {
+        "allowed": false,
+        "reason": "expired",
+        "correct": true
+      },
+      "07_replay": {
+        "allowed": false,
+        "reason": "replay",
+        "correct": true
+      },
+      "08_cross_agent": {
+        "allowed": false,
+        "reason": "principal_mismatch",
+        "correct": true
+      },
+      "09_cross_tenant": {
+        "allowed": false,
+        "reason": "tenant_mismatch",
+        "correct": true
+      },
+      "10_audience_confusion": {
+        "allowed": false,
+        "reason": "bad_audience",
+        "correct": true
+      },
+      "11_delegation_swapped": {
+        "allowed": true,
+        "reason": "nc01",
+        "correct": false
+      }
+    }
+  }
+}

@@ -1,0 +1,119 @@
+{
+  "route_scaling": [
+    {
+      "scheme": "per_principal",
+      "principals": 1000,
+      "route_entries": 1001,
+      "config_bytes": 162727,
+      "startup_s": 0.31,
+      "rss_kb": 69956,
+      "requests_ok": 400,
+      "p50_ms": 0.589,
+      "p99_ms": 1.174
+    },
+    {
+      "scheme": "policy_class",
+      "principals": 1000,
+      "route_entries": 3,
+      "config_bytes": 1635,
+      "startup_s": 0.25,
+      "rss_kb": 51496,
+      "requests_ok": 400,
+      "p50_ms": 0.483,
+      "p99_ms": 0.877
+    },
+    {
+      "scheme": "per_principal",
+      "principals": 10000,
+      "route_entries": 10001,
+      "config_bytes": 1625227,
+      "startup_s": 2.26,
+      "rss_kb": 115340,
+      "requests_ok": 400,
+      "p50_ms": 0.975,
+      "p99_ms": 2.753
+    },
+    {
+      "scheme": "policy_class",
+      "principals": 10000,
+      "route_entries": 3,
+      "config_bytes": 1635,
+      "startup_s": 0.25,
+      "rss_kb": 51504,
+      "requests_ok": 400,
+      "p50_ms": 0.478,
+      "p99_ms": 1.0
+    },
+    {
+      "scheme": "per_principal",
+      "principals": 100000,
+      "route_entries": 100001,
+      "config_bytes": 16340227,
+      "startup_s": 21.59,
+      "rss_kb": 392400,
+      "requests_ok": 400,
+      "p50_ms": 4.105,
+      "p99_ms": 9.296
+    },
+    {
+      "scheme": "policy_class",
+      "principals": 100000,
+      "route_entries": 3,
+      "config_bytes": 1635,
+      "startup_s": 0.25,
+      "rss_kb": 51788,
+      "requests_ok": 400,
+      "p50_ms": 0.492,
+      "p99_ms": 0.779
+    }
+  ],
+  "per_principal_extrapolated_to_1M": {
+    "config_bytes_1M": 163402270,
+    "startup_s_1M": 215.9,
+    "rss_kb_1M": 3924000,
+    "p50_ms_1M_linear": 41.1
+  },
+  "capacity": {
+    "C1_crypto": {
+      "token_bytes": 422,
+      "raw_ed25519_verify_per_s_per_core": 7659,
+      "full_jwt_verify_per_s_per_core": 6376,
+      "p50_us": 138.9,
+      "p99_us": 178.8
+    },
+    "C2_bpf_map": {
+      "rows": [
+        {
+          "entries": 1000,
+          "load_s_cumulative": 0.0,
+          "lookup_p50_us": 1.42,
+          "lookup_p99_us": 2.62,
+          "mem_consumed_kb": 0
+        },
+        {
+          "entries": 10000,
+          "load_s_cumulative": 0.02,
+          "lookup_p50_us": 1.43,
+          "lookup_p99_us": 2.42,
+          "mem_consumed_kb": -52
+        },
+        {
+          "entries": 100000,
+          "load_s_cumulative": 0.24,
+          "lookup_p50_us": 1.51,
+          "lookup_p99_us": 3.03,
+          "mem_consumed_kb": 0
+        },
+        {
+          "entries": 1000000,
+          "load_s_cumulative": 2.31,
+          "lookup_p50_us": 2.65,
+          "lookup_p99_us": 9.01,
+          "mem_consumed_kb": -56
+        }
+      ],
+      "max_entries_configured": 1048576,
+      "entries_inserted": 1000000
+    }
+  }
+}

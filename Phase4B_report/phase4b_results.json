@@ -1,0 +1,246 @@
+{
+  "envoy_version": "1.31.0 (7b8baff1758f0a584dcc3cb657b5032000bcb3d7, BoringSSL)",
+  "test1_stream_id_correlation": {
+    "cleartext_h2": {
+      "observed_connections": 2,
+      "per_conn": {
+        "1": {
+          "preface": true,
+          "parseable_fraction": 1.0,
+          "headers_frames": 96,
+          "distinct_stream_ids": 96
+        },
+        "2": {
+          "preface": true,
+          "parseable_fraction": 1.0,
+          "headers_frames": 96,
+          "distinct_stream_ids": 96
+        }
+      }
+    },
+    "tls_h2": {
+      "observed_connections": 2,
+      "per_conn": {
+        "1": {
+          "preface": false,
+          "opaque": true,
+          "parseable_fraction": 0.0,
+          "headers_frames": 0,
+          "distinct_stream_ids": 0
+        },
+        "2": {
+          "preface": false,
+          "opaque": true,
+          "parseable_fraction": 0.0,
+          "headers_frames": 0,
+          "distinct_stream_ids": 0
+        }
+      }
+    },
+    "correlation": {
+      "wire_side": {
+        "connections_observed": 2,
+        "distinct_stream_ids_extracted": 192,
+        "stream_ids_visible_in_cleartext": true
+      },
+      "join_key": {
+        "envoy_exposes_upstream_stream_id": false,
+        "evidence": "config validation: Not supported field in StreamInfo: UPSTREAM_STREAM_ID (Envoy 1.31.0)",
+        "direct_join_possible": false
+      },
+      "order_inference": {
+        "logged_requests": 192,
+        "tied_start_timestamps": 0,
+        "orderable_fraction": 1.0,
+        "per_connection": {
+          "127.0.0.1:36720": {
+            "requests": 96,
+            "distinct_start_timestamps": 96,
+            "tied_timestamps": 0,
+            "totally_orderable": true
+          },
+          "127.0.0.1:36726": {
+            "requests": 96,
+            "distinct_start_timestamps": 96,
+            "tied_timestamps": 0,
+            "totally_orderable": true
+          }
+        }
+      },
+      "five_tuple_plus_time_baseline": {
+        "events": 192,
+        "ambiguous": 180,
+        "exact_attribution_rate": 0.0625
+      }
+    },
+    "envoy_upstream_stream_id_specifier": "UNSUPPORTED - 'Not supported field in StreamInfo: UPSTREAM_STREAM_ID'"
+  },
+  "test2_tls": {
+    "pool_behaviour_unchanged": true,
+    "policy_class_connections_with_tls": 2,
+    "filter_state_partitioning_with_tls": {
+      "principals": 3,
+      "upstream_connections": 1,
+      "partitioned": false
+    }
+  },
+  "test10_http1_concurrency": {
+    "label": "TEST10 HTTP/1.1 upstream",
+    "rows": [
+      {
+        "concurrency_per_principal": 1,
+        "total_client_threads": 8,
+        "requests": 64,
+        "upstream_connections": 8,
+        "conns_per_client_thread": 1.0,
+        "wall_s": 0.04,
+        "p50_ms": 3.81,
+        "p95_ms": 13.4,
+        "p99_ms": 13.85
+      },
+      {
+        "concurrency_per_principal": 4,
+        "total_client_threads": 32,
+        "requests": 256,
+        "upstream_connections": 20,
+        "conns_per_client_thread": 0.625,
+        "wall_s": 0.11,
+        "p50_ms": 11.35,
+        "p95_ms": 25.01,
+        "p99_ms": 26.35
+      },
+      {
+        "concurrency_per_principal": 8,
+        "total_client_threads": 64,
+        "requests": 512,
+        "upstream_connections": 21,
+        "conns_per_client_thread": 0.328,
+        "wall_s": 0.2,
+        "p50_ms": 20.63,
+        "p95_ms": 40.43,
+        "p99_ms": 44.39
+      },
+      {
+        "concurrency_per_principal": 16,
+        "total_client_threads": 128,
+        "requests": 1024,
+        "upstream_connections": 65,
+        "conns_per_client_thread": 0.508,
+        "wall_s": 0.38,
+        "p50_ms": 39.46,
+        "p95_ms": 69.72,
+        "p99_ms": 78.23
+      },
+      {
+        "concurrency_per_principal": 32,
+        "total_client_threads": 256,
+        "requests": 2048,
+        "upstream_connections": 126,
+        "conns_per_client_thread": 0.492,
+        "wall_s": 0.88,
+        "p50_ms": 85.43,
+        "p95_ms": 200.16,
+        "p99_ms": 233.12
+      },
+      {
+        "concurrency_per_principal": 64,
+        "total_client_threads": 512,
+        "requests": 4096,
+        "upstream_connections": 148,
+        "conns_per_client_thread": 0.289,
+        "wall_s": 1.39,
+        "p50_ms": 137.73,
+        "p95_ms": 260.46,
+        "p99_ms": 288.29
+      }
+    ]
+  },
+  "test11_http2_concurrency": {
+    "label": "TEST11 HTTP/2 upstream",
+    "rows": [
+      {
+        "concurrency_per_principal": 1,
+        "total_client_threads": 8,
+        "requests": 64,
+        "upstream_connections": 2,
+        "conns_per_client_thread": 0.25,
+        "wall_s": 0.05,
+        "p50_ms": 4.4,
+        "p95_ms": 12.2,
+        "p99_ms": 13.55
+      },
+      {
+        "concurrency_per_principal": 4,
+        "total_client_threads": 32,
+        "requests": 256,
+        "upstream_connections": 0,
+        "conns_per_client_thread": 0.0,
+        "wall_s": 0.1,
+        "p50_ms": 11.64,
+        "p95_ms": 16.16,
+        "p99_ms": 19.9
+      },
+      {
+        "concurrency_per_principal": 8,
+        "total_client_threads": 64,
+        "requests": 512,
+        "upstream_connections": 0,
+        "conns_per_client_thread": 0.0,
+        "wall_s": 0.18,
+        "p50_ms": 18.23,
+        "p95_ms": 30.79,
+        "p99_ms": 39.09
+      },
+      {
+        "concurrency_per_principal": 16,
+        "total_client_threads": 128,
+        "requests": 1024,
+        "upstream_connections": 0,
+        "conns_per_client_thread": 0.0,
+        "wall_s": 0.33,
+        "p50_ms": 34.22,
+        "p95_ms": 49.6,
+        "p99_ms": 62.45
+      },
+      {
+        "concurrency_per_principal": 32,
+        "total_client_threads": 256,
+        "requests": 2048,
+        "upstream_connections": 2,
+        "conns_per_client_thread": 0.008,
+        "wall_s": 0.76,
+        "p50_ms": 81.74,
+        "p95_ms": 119.93,
+        "p99_ms": 139.46
+      },
+      {
+        "concurrency_per_principal": 64,
+        "total_client_threads": 512,
+        "requests": 4096,
+        "upstream_connections": 2,
+        "conns_per_client_thread": 0.004,
+        "wall_s": 1.6,
+        "p50_ms": 170.59,
+        "p95_ms": 316.72,
+        "p99_ms": 346.54
+      }
+    ]
+  },
+  "test5_revocation": {
+    "inplace_copy_propagated_s": null,
+    "atomic_rename_propagated_s": 0.003,
+    "bob_unaffected": true,
+    "allow_cx_total": 1,
+    "deny_cx_total": 1,
+    "deny_rq_total": 1,
+    "allow_cx_active_after": 1
+  },
+  "not_tested": [
+    "RQ3 Cilium/eBPF",
+    "RQ4 real WPT/SPIFFE",
+    "RQ6 hybrid pooling",
+    "Test12 HTTP/3-QUIC",
+    "Test13 non-HTTP",
+    "Test14 full attack suite"
+  ]
+}
